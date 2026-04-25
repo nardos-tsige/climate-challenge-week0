@@ -109,4 +109,4 @@ Nardos T. - 10 Academy Week 0 Participant
 
 📄 License
 This project is licensed under the MIT License - see below.
-
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)

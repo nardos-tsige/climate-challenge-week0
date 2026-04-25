@@ -24,7 +24,7 @@ This project analyzes historical climate data (2015-2026) from **Ethiopia, Kenya
 ## 📊 Dashboard
 
 ### Live Demo
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](YOUR_STREAMLIT_URL_HERE)
+https://climate-challenge-week0-cf86fc3wurgfhpdreq3zp7.streamlit.app/
 
 ### Features
 - ✅ Country multi-select (compare multiple nations)
@@ -107,3 +107,4 @@ Final Report - Due April 28
 👩‍💻 Author
 Nardos T. - 10 Academy Week 0 Participant
 
+![MIT License](https://img.shields.io/badge/License-MIT-green)

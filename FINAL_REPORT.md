@@ -1,57 +1,116 @@
 # African Climate Trend Analysis for COP32
-## 10 Academy Week 0 Challenge Final Report
+## 10 Academy Week 0 Final Report
 
-**Author:** Nardos T.
-**Date:** April 28, 2026
+**Author:** Nardos T. | **Date:** April 28, 2026
+**Dashboard:** [Click Here](https://climate-challenge-week0-cf86fc3wurgfhpdreq3zp7.streamlit.app/)
 
 ---
 
 ## Executive Summary
 
-This report analyzes historical climate data (2015-2026) from five African nations: Ethiopia, Kenya, Nigeria, Sudan, and Tanzania. Using NASA POWER satellite data, I conducted exploratory data analysis, cross-country comparisons, and developed an interactive dashboard to surface climate vulnerabilities.
+Analyzed climate data (2015-2026) for Ethiopia, Kenya, Nigeria, Sudan, and Tanzania using NASA POWER data.
 
 **Key Findings:**
-1. Sudan is the most climate-vulnerable country (extreme heat + 72.7% dry days)
-2. Ethiopia's highland climate provides a natural buffer (coolest at 16.1°C)
-3. Nigeria faces extreme precipitation variability (flood risk)
-4. All 5 countries show statistically significant temperature differences (p < 0.001)
+- **Sudan** is most vulnerable (38°C max temp, 72.7% dry days)
+- **Ethiopia** is coolest (16.1°C mean - highland advantage)
+- **Nigeria** has highest flood risk (166mm max rain)
+- Temperature differences are statistically significant (p < 0.001)
 
 ---
 
 ## Task 1: Environment Setup
 
-[Detailed setup process and GitHub workflow]
+- GitHub repo: `climate-challenge-week0`
+- Branches: `setup-task`, `eda-ethiopia`, `compare-countries`, `dashboard-dev`
+- Python venv with pandas, numpy, matplotlib, seaborn, streamlit
+- GitHub Actions CI/CD workflow
+- 3+ conventional commits merged via PR
 
 ---
 
-## Task 2: Data Profiling & EDA
+## Task 2: Data Cleaning & EDA
 
-[Cleaning process, outlier handling, visualizations]
+**Cleaning Steps:**
+1. Added Country column
+2. Converted YEAR+DOY to Date
+3. Replaced -999 with NaN
+4. Forward-fill for missing values
+5. Retained outliers (climate extremes are real)
+
+**Key Visualizations:**
+- Monthly temperature trends (warmest/coolest annotated)
+- Monthly precipitation (peak rainy season)
+- Correlation heatmap
+- Distribution plots (log scale)
+
+**Cleaned data saved to** `data/*_clean.csv`
 
 ---
 
-## Task 3: Cross-Country Comparison
+## Task 3: Cross-Country Results
 
-[Temperature trends, precipitation analysis, vulnerability ranking]
+**Temperature Summary:**
+
+| Country | Mean Temp | Dry Days |
+|---------|-----------|----------|
+| Ethiopia | 16.1°C | 20.7% |
+| Kenya | 20.4°C | 6.3% |
+| Nigeria | 26.7°C | 11.8% |
+| Sudan | 28.8°C | 72.7% |
+| Tanzania | 26.8°C | 5.2% |
+
+**Precipitation Summary:**
+
+| Country | Mean Rain | Max Rain |
+|---------|-----------|----------|
+| Ethiopia | 3.6 mm/day | 82 mm |
+| Kenya | 1.5 mm/day | 52 mm |
+| Nigeria | 4.2 mm/day | 166 mm |
+| Sudan | 0.6 mm/day | 67 mm |
+| Tanzania | 3.7 mm/day | 123 mm |
+
+**Statistical Test:** ANOVA p < 0.001 → differences are real
+
+**Vulnerability Ranking (1=most vulnerable):**
+1. Sudan (heat + drought)
+2. Nigeria (flood risk)
+3. Ethiopia (variable)
+4. Tanzania (moderate)
+5. Kenya (most balanced)
 
 ---
 
 ## Bonus: Interactive Dashboard
 
-[Features, screenshots, deployment link]
+**Features:**
+- Country multi-select
+- Year slider (2015-2026)
+- Variable selector (Temp/Precip/Humidity)
+- Line chart & boxplot
+- Download data as CSV
+
+**Screenshots:** `dashboard_screenshots/` folder
+
+**Live:** [Streamlit App](https://climate-challenge-week0-cf86fc3wurgfhpdreq3zp7.streamlit.app/)
 
 ---
 
-## COP32 Policy Recommendations
+## COP32 Recommendations
 
-1. **Priority climate finance for Sudan**
-2. **Heat early warning systems for all countries**
-3. **Regional water security infrastructure**
-4. **Flood defense for Nigeria**
-5. **Drought-resilient agriculture for Ethiopia and Sudan**
+| Priority | Action | Target |
+|----------|--------|--------|
+| 1 | Climate finance | Sudan |
+| 2 | Heat warning systems | All countries |
+| 3 | Flood defense | Nigeria |
+| 4 | Drought agriculture | Ethiopia, Sudan |
+| 5 | Water infrastructure | Regional |
 
 ---
 
 ## Conclusion
 
-[Summary of findings and recommendations]
+Sudan needs priority climate finance. Ethiopia's highland gives it a cooler profile but regional cooperation is key. The data provides strong evidence for action at COP32.
+
+---
+
+**Repository:** https://github.com/nardos-tsige/climate-challenge-week0

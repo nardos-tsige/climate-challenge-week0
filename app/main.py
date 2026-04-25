@@ -20,7 +20,7 @@ def load_all_data():
     all_data = {}
     
     for country in countries:
-        file_path = data_dir / f"{country}.csv"
+        file_path = data_dir / f"{country}_clean.csv"
         if file_path.exists():
             df = pd.read_csv(file_path)
             # Clean data

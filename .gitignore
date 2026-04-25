@@ -1,23 +1,4 @@
-# Data files - NEVER commit
-*.csv
-data/
-*.xlsx
-*.xls
-
-# Python
-__pycache__/
-*.pyc
-venv/
-.python_env/
-
-# Jupyter
-.ipynb_checkpoints/
-*.ipynb_checkpoints
-
-# IDE
-.vscode/
-.idea/
-
-# Plots (optional - keep if you want to share plots)
-# plots/
-
+venv/ 
+__pycache__/ 
+.vscode/ 
+.ipynb_checkpoints/ 

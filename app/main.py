@@ -1,5 +1,3 @@
-# app/main.py - Fully Functional Dashboard
-
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -32,11 +30,11 @@ def load_and_clean_data():
             df['Year'] = df['Date'].dt.year
             df['Month'] = df['Date'].dt.month
             
-            # Forward fill missing values (corrected method)
+            # Forward fill missing values - FIXED HERE
             weather_cols = ['T2M', 'T2M_MAX', 'T2M_MIN', 'PRECTOTCORR', 'RH2M', 'WS2M']
             for col in weather_cols:
                 if col in df.columns:
-                    df[col] = df[col].fillna(method='ffill')
+                    df[col] = df[col].ffill()  # Changed from fillna(method='ffill')
             
             all_data[country.capitalize()] = df
             print(f"✅ Loaded {country}: {len(df)} rows")

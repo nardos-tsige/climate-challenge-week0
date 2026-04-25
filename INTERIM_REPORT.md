@@ -106,4 +106,4 @@ climate-challenge-week0/
 ## Repository Links
 
 - GitHub: https://github.com/nardos-tsige/climate-challenge-week0
-- Dashboard (if deployed): [DEPLOYED DEMO](https://climate-challenge-week0-cf86fc3wurgfhpdreq3zp7.streamlit.app/)
+- Dashboard (if deployed): [Streamlit App](https://climate-challenge-week0-cf86fc3wurgfhpdreq3zp7.streamlit.app/)

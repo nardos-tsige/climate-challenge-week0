@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from pathlib import Path
 
-# Page config
+#page config
 st.set_page_config(page_title="African Climate Dashboard", layout="wide")
 
 st.title("🌍 African Climate Trends Analysis Dashboard")
@@ -22,15 +22,14 @@ def load_and_clean_data():
         if file_path.exists():
             df = pd.read_csv(file_path)
             
-            # Replace -999 with NaN
+            #replace -999 with NaN
             df.replace(-999, np.nan, inplace=True)
             
-            # Create Date column from YEAR and DOY
+            #create Date column from YEAR and DOY
             df['Date'] = pd.to_datetime(df['YEAR'] * 1000 + df['DOY'], format="%Y%j")
             df['Year'] = df['Date'].dt.year
             df['Month'] = df['Date'].dt.month
             
-            # Forward fill missing values - FIXED HERE
             weather_cols = ['T2M', 'T2M_MAX', 'T2M_MIN', 'PRECTOTCORR', 'RH2M', 'WS2M']
             for col in weather_cols:
                 if col in df.columns:
@@ -43,7 +42,7 @@ def load_and_clean_data():
     
     return all_data
 
-# Load data
+#load data
 with st.spinner("Loading climate data..."):
     try:
         all_data = load_and_clean_data()
@@ -54,7 +53,7 @@ with st.spinner("Loading climate data..."):
         st.error(f"Error loading data: {e}")
         st.stop()
 
-# Sidebar Filters
+#sidebar filters
 st.sidebar.header("🔍 Filters")
 
 country_names = list(all_data.keys())
@@ -64,7 +63,7 @@ selected_countries = st.sidebar.multiselect(
     default=['Ethiopia'] if 'Ethiopia' in country_names else country_names[:1]
 )
 
-# Get year range from all data
+#get year range from all data
 all_years = []
 for df in all_data.values():
     all_years.extend(df['Year'].tolist())
@@ -87,7 +86,7 @@ variable = st.sidebar.selectbox(
     }[x]
 )
 
-# Filter data based on selections
+#filter data based on selections that in a whatever way you want
 filtered_data = []
 for country in selected_countries:
     if country in all_data:
@@ -98,11 +97,11 @@ for country in selected_countries:
             temp_df['Country'] = country
             filtered_data.append(temp_df)
 
-# Display dashboard
+#display dashboard
 if filtered_data:
     df_combined = pd.concat(filtered_data, ignore_index=True)
     
-    # Metrics
+    #metrics
     col1, col2, col3 = st.columns(3)
     col1.metric("📊 Countries", len(selected_countries))
     col2.metric("📅 Years", f"{year_range[0]}-{year_range[1]}")
@@ -110,7 +109,7 @@ if filtered_data:
     
     st.markdown("---")
     
-    # Line Chart
+    #line chart
     st.subheader(f"📈 {variable} Trends Over Time")
     fig, ax = plt.subplots(figsize=(12, 5))
     
@@ -128,7 +127,7 @@ if filtered_data:
     plt.tight_layout()
     st.pyplot(fig)
     
-    # Boxplot
+    #boxplot
     st.subheader("📊 Distribution by Country")
     fig2, ax2 = plt.subplots(figsize=(10, 5))
     
@@ -154,12 +153,12 @@ if filtered_data:
     plt.tight_layout()
     st.pyplot(fig2)
     
-    # Summary Statistics
+    #summary Statistics
     st.subheader("📋 Summary Statistics")
     summary = df_combined.groupby('Country')[variable].agg(['mean', 'median', 'std', 'min', 'max']).round(2)
     st.dataframe(summary, use_container_width=True)
     
-    # Download button
+    #download button
     csv_data = df_combined.to_csv(index=False).encode('utf-8')
     st.download_button(
         label="📥 Download Filtered Data as CSV",
@@ -168,14 +167,14 @@ if filtered_data:
         mime="text/csv"
     )
     
-    # Raw data expander
+    #raw data expander
     with st.expander("📊 View Raw Data"):
         st.dataframe(df_combined, use_container_width=True)
         
 else:
     st.warning("No data available for selected filters. Please adjust your selection.")
 
-# Footer
+#footer
 st.markdown("---")
 st.markdown(
     """

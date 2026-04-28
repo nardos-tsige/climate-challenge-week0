@@ -1,4 +1,4 @@
-<img width="2674" height="1477" alt="image" src="https://github.com/user-attachments/assets/61e69ea1-accd-4df5-a780-3bbf1affe73f" />**African Climate Trend Analysis for COP32**
+**African Climate Trend Analysis for COP32**
 *10 Academy Week 0 Final Report*
 
 1. Introduction & Business Context

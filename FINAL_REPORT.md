@@ -1,5 +1,6 @@
 **African Climate Trend Analysis for COP32**
-*10 Academy Week 0 Final Report*
+
+**10 Academy Week 0 Final Report**
 
 1. Introduction & Business Context
 
